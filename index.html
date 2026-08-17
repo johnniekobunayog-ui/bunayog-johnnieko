@@ -121,9 +121,10 @@
 }
 
 .our-products {
-    width: 1200px;
-    margin: auto;
-    padding: 40px 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
 .our-products h2 {
@@ -137,9 +138,9 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: 30px 0;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 25px;
 }
 
@@ -197,6 +198,20 @@
 .product-card {
     position: relative;
     display: block;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+}
+
+.product-card:hover .overlay {
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .price {
@@ -362,29 +377,294 @@ hr {
   margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+/* Responsive styles for any devices */
+@media (max-width: 1100px) {
+    .products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
 
-  .footer-links {
-    margin: 20px 0;
-    text-align: center;
-  }
+    .product-card img {
+        height: 19rem;
+    }
 
-  .footer-subscribe {
-    text-align: center;
-    align-self: center;
-    margin-top: 20px;
-  }
-
-  .footer-subscribe form {
-    justify-content: center;
-  }
+    .footer-container {
+        max-width: 95%;
+    }
 }
 
+@media (max-width: 768px) {
+    .top-banner {
+        height: 2.5rem;
+    }
+
+    .banner-text {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        padding: 0 25px;
+    }
+
+    .background-slide {
+        height: 75vh;
+        min-height: 450px;
+    }
+
+    .background-slide img {
+        object-position: center;
+    }
+
+    .sname {
+        width: 90%;
+        text-align: center;
+        font-size: clamp(1.8rem, 6vw, 3rem);
+        line-height: 1.2;
+    }
+
+    .our-products {
+        padding: 35px 15px;
+    }
+
+    .our-products h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 20px 0;
+    }
+
+    .product-card img {
+        height: 18rem;
+    }
+
+    .price {
+        top: 8px;
+        right: 8px;
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .view-btn {
+        padding: 9px 16px;
+        font-size: 12px;
+    }
+
+    .footer {
+        padding: 60px 20px 40px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .footer-links,
+    .footer-subscribe {
+        width: 100%;
+        flex: none;
+    }
+
+    .footer-links {
+        margin: 30px 0;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .footer-subscribe {
+        text-align: center;
+        align-self: center;
+    }
+
+    .footer-subscribe form {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-subscribe input {
+        width: min(200px, 60%);
+    }
+
+    .about-me {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-banner {
+        height: 2.3rem;
+    }
+
+    .banner-text {
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 0 15px;
+    }
+
+    .background-slide {
+        height: 65vh;
+        min-height: 400px;
+    }
+
+    .sname {
+        width: 90%;
+        font-size: clamp(1.5rem, 8vw, 2.2rem);
+        line-height: 1.15;
+        letter-spacing: 0.5px;
+    }
+
+    .our-products {
+        padding: 30px 12px;
+    }
+
+    .our-products h2 {
+        font-size: 1.3rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+        max-height: 500px;
+        object-fit: cover;
+    }
+
+    .price {
+        top: 10px;
+        right: 10px;
+        font-size: 13px;
+        padding: 6px 9px;
+    }
+
+    .view-btn {
+        padding: 9px 17px;
+        font-size: 12px;
+    }
+
+    .footer {
+        padding: 50px 15px 35px;
+    }
+
+    .footer-logo h2 {
+        font-size: 20px;
+    }
+
+    .footer-logo p {
+        font-size: 13px;
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 15px;
+        margin: 30px 0;
+        width: 100%;
+    }
+
+    .footer-links h4 {
+        font-size: 13px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .footer-subscribe form {
+        display: flex;
+        width: 100%;
+    }
+
+    .footer-subscribe input {
+        width: 65%;
+        min-width: 0;
+        font-size: 13px;
+    }
+
+    .footer-subscribe button {
+        width: 35%;
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .about-me {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
+    }
+
+    .about-me img {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+
+    .about-me h4 {
+        font-size: 14px;
+    }
+
+    .about-me p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .footer-bottom {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 360px) {
+    .banner-text {
+        font-size: 9px;
+        letter-spacing: 0.7px;
+    }
+
+    .background-slide {
+        min-height: 350px;
+    }
+
+    .sname {
+        font-size: 1.4rem;
+    }
+
+    .our-products {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .product-card img {
+        min-height: 300px;
+    }
+
+    .footer-links {
+        gap: 20px 10px;
+    }
+
+    .about-me img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .about-me p {
+        font-size: 10px;
+    }
+}
 
 </style>
 <body>
