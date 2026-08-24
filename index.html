@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <title>GET TO'ˢ THRIFT CO.</title>
 
     <style>
@@ -19,6 +21,10 @@
         html,
         body {
             scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
         }
 
         .site-header {
@@ -132,44 +138,74 @@
             transform: scale(1.1);
         }
 
-        .diamond-toggle {
-            position: fixed;
-            top: 55px;
-            left: 25px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 5000;
-        }
-
-        .diamond {
-            width: 45px;
-            height: 45px;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .cart-icon {
             position: relative;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-            transition: transform 0.4s ease;
         }
 
-        .diamond i {
-            color: black;
-            font-size: 25px;
-            transition: transform 0.4s ease;
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -9px;
+            min-width: 16px;
+            height: 16px;
+            padding: 0 4px;
+            border-radius: 50%;
+            background: black;
+            color: white;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
         }
 
-        .diamond-toggle.active .diamond {
-            transform: rotate(45deg);
-        }
+        .diamond-toggle {
+    position: fixed;
+    top: 55px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5000;
+    transition: left 0.35s ease;
+}
 
-        .diamond-toggle.active .diamond i {
-            transform: rotate(-45deg);
-        }
+.diamond {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
+}
+
+.diamond i {
+    color: black;
+    font-size: 25px;
+    transition: transform 0.4s ease;
+}
+
+.diamond-toggle.active .diamond {
+    transform: rotate(45deg);
+}
+
+.diamond-toggle.active .diamond i {
+    transform: rotate(-45deg);
+}
+
+.diamond-toggle.active {
+    left: 300px;
+}
+
+.diamond-toggle {
+    right: 20px;
+}
 
         .close-icon {
             display: none;
@@ -276,6 +312,137 @@
         .tiktok:hover,
         .insta:hover {
             transform: scale(1.1);
+        }
+
+        .market-side {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 390px;
+            height: 100vh;
+            background: white;
+            z-index: 6000;
+            padding: 35px;
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.18);
+            transform: translateX(100%);
+            transition: transform 0.45s cubic-bezier(0.77, 0, 0.18, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .market-side.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .cart-close {
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 22px;
+            transition: 0.3s ease;
+        }
+
+        .cart-close:hover {
+            background: #333;
+            transform: rotate(90deg);
+        }
+
+        .cart-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px 0;
+        }
+
+        .empty-cart {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #777;
+        }
+
+        .empty-cart i {
+            font-size: 55px;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart h3 {
+            color: black;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .empty-cart p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            height: 48px;
+            border: none;
+            background: black;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: #333;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 5500;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .background-slide {
@@ -677,6 +844,10 @@
                 padding: 90px 30px 30px;
             }
 
+            .market-side {
+                width: 100%;
+            }
+
             .footer {
                 padding: 60px 20px 40px;
             }
@@ -938,8 +1109,12 @@
         </nav>
 
         <div class="scroll-header-icons">
-            <i class="ri-search-line"></i>
-            <i class="ri-shopping-bag-line"></i>
+            <i class="ri-heart-line" title="Wishlist"></i>
+
+            <div class="cart-icon" id="cartButton">
+                <i class="ri-shopping-bag-line"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
         </div>
 
     </div>
@@ -947,13 +1122,11 @@
     <div class="diamond-toggle" id="menu-btn">
 
         <div class="diamond">
-
             <i class="ri-menu-line" id="menu-icon"></i>
 
             <span class="close-icon" id="close-btn">
                 <i class="ri-close-line"></i>
             </span>
-
         </div>
 
     </div>
@@ -997,6 +1170,51 @@
             <a href="#" class="insta">
                 <i class="ri-instagram-fill"></i>
             </a>
+
+        </div>
+
+    </nav>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <nav class="market-side" id="side-cart">
+
+        <div class="cart-header">
+
+            <h1>ADD TO CART</h1>
+
+            <button class="cart-close" id="cartClose">
+                <i class="ri-close-line"></i>
+            </button>
+
+        </div>
+
+        <div class="cart-content">
+
+            <div class="empty-cart" id="emptyCart">
+
+                <i class="ri-shopping-bag-3-line"></i>
+
+                <h3>Your cart is empty</h3>
+
+                <p>
+                    Your selected items will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₱0.00</span>
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+                CHECKOUT
+            </button>
 
         </div>
 
@@ -1133,8 +1351,11 @@
             <div class="footer-top">
 
                 <div class="footer-logo">
+
                     <h2>GET TO'ˢ THRIFT CO.</h2>
+
                     <p>Made with good intention</p>
+
                 </div>
 
                 <div class="footer-links">
@@ -1240,100 +1461,267 @@
 
     </footer>
 
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    const track = document.getElementById("bannerTrack");
+    const menuBtn = document.getElementById("menu-btn");
+    const sidebar = document.getElementById("sidebar");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeBtn = document.getElementById("close-btn");
+    const scrollHeader = document.getElementById("scrollHeader");
 
-            const track = document.getElementById("bannerTrack");
-            const menuBtn = document.getElementById("menu-btn");
-            const sidebar = document.getElementById("sidebar");
-            const menuIcon = document.getElementById("menu-icon");
-            const closeBtn = document.getElementById("close-btn");
-            const scrollHeader = document.getElementById("scrollHeader");
+    const cartButton = document.getElementById("cartButton");
+    const sideCart = document.getElementById("side-cart");
+    const cartClose = document.getElementById("cartClose");
+    const cartOverlay = document.getElementById("cartOverlay");
 
-            const bannerText = "Made With Good Intension";
+    const bannerText = "Made With Good Intension";
 
-            track.innerHTML = "";
+    /* BANNER */
+    if (track) {
 
-            for (let i = 0; i < 20; i++) {
-                const item = document.createElement("div");
+        track.innerHTML = "";
 
-                item.className = "banner-text";
-                item.textContent = bannerText;
+        for (let i = 0; i < 20; i++) {
 
-                track.appendChild(item);
+            const item = document.createElement("div");
+
+            item.className = "banner-text";
+            item.textContent = bannerText;
+
+            track.appendChild(item);
+        }
+
+        let x = -track.scrollWidth;
+        let lastTime = performance.now();
+        const speed = 80;
+
+        function moveBanner(now) {
+
+            const delta = (now - lastTime) / 1000;
+
+            lastTime = now;
+            x += speed * delta;
+
+            if (x >= 0) {
+                x = -track.scrollWidth;
             }
 
-            let x = -track.scrollWidth;
-            let lastTime = performance.now();
-            const speed = 80;
-
-            function moveBanner(now) {
-
-                const delta = (now - lastTime) / 1000;
-
-                lastTime = now;
-
-                x += speed * delta;
-
-                if (x >= 0) {
-                    x = -track.scrollWidth;
-                }
-
-                track.style.transform =
-                    `translate3d(${x}px, 0, 0)`;
-
-                requestAnimationFrame(moveBanner);
-            }
+            track.style.transform =
+                `translate3d(${x}px, 0, 0)`;
 
             requestAnimationFrame(moveBanner);
+        }
 
-            function updateStickyHeader() {
+        requestAnimationFrame(moveBanner);
+    }
 
-                if (window.scrollY > 150) {
-                    scrollHeader.classList.add("show");
-                } else {
-                    scrollHeader.classList.remove("show");
-                }
+
+    /* STICKY HEADER */
+    function updateStickyHeader() {
+
+        if (!scrollHeader) return;
+
+        if (window.scrollY > 150) {
+            scrollHeader.classList.add("show");
+        } else {
+            scrollHeader.classList.remove("show");
+        }
+    }
+
+
+    /* DIAMOND POSITION */
+    function setDiamondPosition() {
+
+        if (!menuBtn) return;
+
+        const screenWidth = window.innerWidth;
+
+        if (menuBtn.classList.contains("active")) {
+
+            if (screenWidth <= 480) {
+
+                menuBtn.style.left =
+                    "calc(100% - 65px)";
+
+            } else if (screenWidth <= 768) {
+
+                menuBtn.style.left =
+                    "calc(100% - 65px)";
+
+            } else {
+
+                menuBtn.style.left = "300px";
             }
 
-            function toggleSidebar() {
+        } else {
 
-                const isOpen =
-                    menuBtn.classList.toggle("active");
+            if (screenWidth <= 480) {
 
-                sidebar.classList.toggle(
-                    "active",
-                    isOpen
-                );
+                menuBtn.style.left = "15px";
 
-                if (isOpen) {
+            } else if (screenWidth <= 768) {
 
-                    menuIcon.style.display = "none";
-                    closeBtn.style.display = "block";
+                menuBtn.style.left = "18px";
 
-                } else {
+            } else {
 
-                    menuIcon.style.display = "block";
-                    closeBtn.style.display = "none";
+                menuBtn.style.left = "25px";
+            }
+        }
+    }
 
-                }
+
+    /* SIDEBAR */
+    function toggleSidebar(event) {
+
+        if (event) {
+            event.stopPropagation();
+        }
+
+        if (!menuBtn || !sidebar) return;
+
+        const isOpen =
+            menuBtn.classList.toggle("active");
+
+        sidebar.classList.toggle(
+            "active",
+            isOpen
+        );
+
+        if (isOpen) {
+
+            if (menuIcon) {
+                menuIcon.style.display = "none";
             }
 
-            menuBtn.addEventListener(
-                "click",
-                toggleSidebar
-            );
+            if (closeBtn) {
+                closeBtn.style.display = "block";
+            }
 
-            window.addEventListener(
-                "scroll",
-                updateStickyHeader
-            );
+        } else {
 
-            updateStickyHeader();
+            if (menuIcon) {
+                menuIcon.style.display = "block";
+            }
 
-        });
-    </script>
+            if (closeBtn) {
+                closeBtn.style.display = "none";
+            }
+        }
 
+        setDiamondPosition();
+    }
+
+
+    /* OPEN SIDE CART */
+    function openCart(event) {
+
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        if (!sideCart) return;
+
+        sideCart.classList.add("active");
+
+        if (cartOverlay) {
+            cartOverlay.classList.add("active");
+        }
+
+        document.body.style.overflow = "hidden";
+    }
+
+
+    /* CLOSE SIDE CART */
+    function closeCart(event) {
+
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        if (!sideCart) return;
+
+        sideCart.classList.remove("active");
+
+        if (cartOverlay) {
+            cartOverlay.classList.remove("active");
+        }
+
+        document.body.style.overflow = "";
+    }
+
+
+    /* DIAMOND BUTTON */
+    if (menuBtn) {
+        menuBtn.addEventListener(
+            "click",
+            toggleSidebar
+        );
+    }
+
+
+    /* CART ICON */
+    if (cartButton) {
+        cartButton.addEventListener(
+            "click",
+            openCart
+        );
+    }
+
+
+    /* CART CLOSE BUTTON */
+    if (cartClose) {
+        cartClose.addEventListener(
+            "click",
+            closeCart
+        );
+    }
+
+
+    /* CART OVERLAY */
+    if (cartOverlay) {
+        cartOverlay.addEventListener(
+            "click",
+            closeCart
+        );
+    }
+
+
+    /* ESC KEY CLOSE CART */
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+                closeCart();
+            }
+        }
+    );
+
+
+    /* SCROLL */
+    window.addEventListener(
+        "scroll",
+        updateStickyHeader
+    );
+
+
+    /* RESIZE */
+    window.addEventListener(
+        "resize",
+        setDiamondPosition
+    );
+
+
+    /* INITIAL STATE */
+    updateStickyHeader();
+    setDiamondPosition();
+
+});
+</script>
 </body>
 </html>
